@@ -4,25 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Amit Eitan — Software &amp; AI Solutions</title>
-<meta name="description" content="Amit Eitan is a registered sole proprietor in Israel building software and AI solutions, including TOMA, an automated voice check-in service for security teams.">
+<meta name="description" content="Amit Eitan builds custom software, AI automation and communication systems for businesses in Israel. Registered sole proprietor.">
 <meta property="og:title" content="Amit Eitan — Software & AI Solutions">
-<meta property="og:description" content="Software development and AI solutions. TOMA: automated voice check-in for security teams.">
+<meta property="og:description" content="Custom software, AI automation and communication systems for businesses in Israel.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23033c64'/%3E%3Cpath d='M14 20h36v7H36v21h-8V27H14z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23062b45'/%3E%3Cpath d='M16 46 32 16l16 30M22 38h20' fill='none' stroke='%238cc4ee' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Rubik:wght@400;500;600&display=swap">
 <style>
-/* Layout: a fixed identity rail on the left, long-form content column on the right. Left-aligned, document-like. */
+/* Layout: top bar, a deep-navy hero band with line-art, light content sections on a 12-col rhythm, navy contact band. */
 :root {
-  --bg: #f5f7fa;
+  --bg: #f4f6f9;
   --surface: #ffffff;
-  --ink: #0d1b2a;
-  --muted: #526173;
-  --line: #d8dfe7;
-  --accent: #033c64;
-  --accent-ink: #ffffff;
-  --accent-soft: #e6eef5;
+  --ink: #0b1a2a;
+  --muted: #566577;
+  --line: #d9e0e8;
+  --accent: #0a4b7a;
+  --accent-soft: #e5eef6;
+
+  --hero-bg: #062b45;
+  --hero-ink: #f2f7fb;
+  --hero-muted: #a9bfd1;
+  --hero-line: #1d4a6b;
+  --hero-accent: #8cc4ee;
 
   --font-display: "Rubik", "Arial Hebrew", "Segoe UI", system-ui, sans-serif;
   --font-body: "Assistant", "Arial Hebrew", "Segoe UI", system-ui, sans-serif;
@@ -31,230 +36,249 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0a131c;
-    --surface: #101c28;
-    --ink: #e7edf3;
-    --muted: #9aa9b8;
-    --line: #223240;
-    --accent: #86bde8;
-    --accent-ink: #0a131c;
-    --accent-soft: #14283a;
+    --bg: #08121b;
+    --surface: #0f1b27;
+    --ink: #e8eef4;
+    --muted: #9aaab9;
+    --line: #213241;
+    --accent: #8cc4ee;
+    --accent-soft: #12283a;
+    --hero-bg: #04192a;
+    --hero-line: #17415f;
     color-scheme: dark;
   }
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 1.125rem;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 1.125rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 a { color: var(--accent); text-underline-offset: 3px; }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--hero-accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding-inline: clamp(1rem, 4vw, 3rem); }
 
-/* language switching: elements carry .en / .he, the html lang decides */
 html[lang="he"] .en { display: none !important; }
 html[lang="en"] .he { display: none !important; }
 
-.shell {
-  display: grid;
-  grid-template-columns: minmax(0, 17rem) minmax(0, 1fr);
-  gap: clamp(2rem, 6vw, 6rem);
-  max-width: 76rem;
-  margin: 0 auto;
-  padding-inline: clamp(1rem, 4vw, 3rem);
-  padding-block: clamp(1.5rem, 4vw, 3.5rem);
+/* top bar + hero */
+.hero { background: var(--hero-bg); color: var(--hero-ink); position: relative; overflow: hidden; }
+.hero::before { /* fine engineering grid */
+  content: ""; position: absolute; inset: 0; opacity: .5;
+  background-image: linear-gradient(var(--hero-line) 1px, transparent 1px), linear-gradient(90deg, var(--hero-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 90% at 80% 40%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 90% at 80% 40%, #000 0%, transparent 75%);
 }
+.bar { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.4rem; }
+.brand { display: flex; align-items: center; gap: .7rem; color: var(--hero-ink); text-decoration: none; font-family: var(--font-display); font-weight: 500; letter-spacing: -.01em; }
+.brand-glyph { width: 2.1rem; height: 2.1rem; border-radius: .5rem; border: 1.5px solid var(--hero-accent); display: grid; place-items: center; color: var(--hero-accent); }
+.bar-right { display: flex; align-items: center; gap: 1.75rem; }
+.links { display: flex; gap: 1.5rem; }
+.links a { color: var(--hero-muted); text-decoration: none; font-size: 1rem; }
+.links a:hover { color: var(--hero-ink); }
+.lang { display: inline-flex; border: 1px solid var(--hero-line); border-radius: 999px; padding: 2px; }
+.lang button { font: 500 .8rem var(--font-mono); letter-spacing: .05em; border: 0; background: transparent; color: var(--hero-muted); padding: .3rem .75rem; border-radius: 999px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--hero-accent); color: #062b45; }
 
-/* rail */
-.rail { position: sticky; top: 2rem; align-self: start; display: flex; flex-direction: column; gap: 2rem; min-width: 0; }
-.mark { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--ink); }
-.mark-glyph {
-  width: 2.5rem; height: 2.5rem; border-radius: .6rem; background: var(--accent); color: var(--accent-ink);
-  display: grid; place-items: center; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; letter-spacing: -.02em;
-}
-.mark-name { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; line-height: 1.2; }
-.mark-name small { display: block; font-family: var(--font-body); font-weight: 400; color: var(--muted); font-size: .9rem; }
-.nav { display: flex; flex-direction: column; gap: .15rem; border-inline-start: 1px solid var(--line); }
-.nav a {
-  color: var(--muted); text-decoration: none; padding: .35rem 1rem; font-size: 1rem;
-  margin-inline-start: -1px; border-inline-start: 2px solid transparent;
-}
-.nav a:hover { color: var(--ink); border-inline-start-color: var(--accent); }
-.lang { align-self: flex-start; display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--surface); }
-.lang button {
-  font: 500 .85rem var(--font-mono); letter-spacing: .04em; border: 0; background: transparent; color: var(--muted);
-  padding: .35rem .8rem; border-radius: 999px; cursor: pointer;
-}
-.lang button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
-
-/* content */
-main { min-width: 0; display: flex; flex-direction: column; gap: clamp(3rem, 7vw, 5.5rem); }
-.eyebrow { font: 500 .8rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 1rem; }
+.hero-body { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 2rem; align-items: center; padding-block: clamp(3rem, 8vw, 6.5rem) clamp(3.5rem, 9vw, 7rem); }
+.eyebrow { font: 500 .8rem var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--hero-accent); margin: 0 0 1.25rem; }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: -.02em; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2.25rem, 5.4vw, 3.9rem); line-height: 1.08; max-width: 18ch; }
-h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; margin-bottom: 1.25rem; }
-h3 { font-size: 1.2rem; line-height: 1.3; margin-bottom: .4rem; }
-p { margin: 0 0 1rem; max-width: 62ch; }
-.lead { font-size: clamp(1.15rem, 2vw, 1.35rem); color: var(--muted); margin-top: 1.5rem; max-width: 56ch; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4.2rem); line-height: 1.06; font-weight: 500; max-width: 15ch; }
+.hero .lead { font-size: clamp(1.1rem, 1.9vw, 1.3rem); color: var(--hero-muted); margin: 1.5rem 0 2rem; max-width: 46ch; }
+.cta { display: inline-flex; align-items: center; gap: .6rem; background: var(--hero-accent); color: #062b45; text-decoration: none; font-weight: 600; padding: .8rem 1.35rem; border-radius: .4rem; font-size: 1rem; }
+.cta:hover { background: #a7d3f3; }
+.art { width: 100%; height: auto; max-width: 28rem; justify-self: end; color: var(--hero-accent); }
 
-.practice { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--line); }
-.practice > div { padding: 1.5rem 1.5rem 1.5rem 0; min-width: 0; }
-.practice > div + div { padding-inline-start: 1.5rem; border-inline-start: 1px solid var(--line); }
-.practice p { color: var(--muted); font-size: 1rem; margin: 0; }
+/* sections */
+section { padding-block: clamp(3rem, 7vw, 5.5rem); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2rem; margin-bottom: clamp(1.75rem, 4vw, 3rem); align-items: start; }
+.sec-head .eyebrow { color: var(--accent); margin: 0 0 .6rem; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); line-height: 1.15; }
+.sec-head p { margin: 0; color: var(--muted); max-width: 52ch; }
+h3 { font-size: 1.2rem; line-height: 1.3; margin-bottom: .45rem; }
 
-/* product */
-.product { background: var(--surface); border: 1px solid var(--line); border-radius: .5rem; padding: clamp(1.25rem, 3vw, 2rem); display: grid; gap: 1.5rem; }
-.product-head { display: flex; align-items: baseline; gap: .9rem; flex-wrap: wrap; }
-.product-head h2 { margin: 0; }
-.tag { font: 500 .78rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: .2rem .55rem; border-radius: .25rem; }
-.points { margin: 0; padding: 0; list-style: none; display: grid; gap: .85rem; }
-.points li { padding-inline-start: 1.5rem; position: relative; max-width: 62ch; }
-.points li::before { content: ""; position: absolute; inset-inline-start: 0; top: .72em; width: .7rem; height: 2px; background: var(--accent); }
-.record {
-  font-family: var(--font-mono); font-size: .88rem; line-height: 1.7; background: var(--bg); border: 1px solid var(--line);
-  border-radius: .4rem; padding: 1rem 1.15rem; overflow-x: auto; direction: ltr; text-align: left; margin: 0; color: var(--ink);
-}
-.record .k { color: var(--muted); }
-.record-cap { font: 400 .8rem var(--font-mono); color: var(--muted); margin: -.75rem 0 0; }
+.cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: .6rem; overflow: hidden; }
+.card { background: var(--surface); padding: 1.75rem 1.5rem 2rem; min-width: 0; }
+.card svg { width: 2.2rem; height: 2.2rem; color: var(--accent); margin-bottom: 1.25rem; }
+.card p { margin: 0; color: var(--muted); font-size: 1rem; }
 
-/* responsible use */
-.use { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 3rem; }
-.use p { margin: 0; color: var(--muted); font-size: 1rem; }
-.use h3 { color: var(--ink); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; counter-reset: step; }
+.steps li { counter-increment: step; border-top: 2px solid var(--ink); padding-top: 1rem; min-width: 0; }
+.steps li::before { content: "0" counter(step); display: block; font: 500 .85rem var(--font-mono); color: var(--accent); margin-bottom: .6rem; }
+.steps p { margin: 0; color: var(--muted); font-size: 1rem; }
 
-/* facts + contact */
-.facts { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .65rem 2rem; font-size: 1rem; }
-.facts dt { font: 500 .8rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: .2rem; }
-.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
-.mono { font-family: var(--font-mono); font-size: .95rem; }
+.alt { background: var(--surface); border-block: 1px solid var(--line); }
+.principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 4rem; }
+.principles > div { padding-inline-start: 1.25rem; border-inline-start: 2px solid var(--accent); min-width: 0; }
+.principles p { margin: 0; color: var(--muted); font-size: 1rem; }
 
-footer { border-top: 1px solid var(--line); padding-top: 1.5rem; color: var(--muted); font-size: .95rem; }
+.facts { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 0; border-top: 1px solid var(--line); font-size: 1.05rem; }
+.facts dt, .facts dd { padding: .95rem 0; border-bottom: 1px solid var(--line); margin: 0; }
+.facts dt { font: 500 .8rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-inline-end: 3rem; padding-top: 1.15rem; }
 
-@media (max-width: 56rem) {
-  .shell { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-  .rail { position: static; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
-  .nav { display: none; }
+.contact { background: var(--hero-bg); color: var(--hero-ink); padding-block: clamp(3.5rem, 8vw, 6rem); }
+.contact h2 { max-width: 20ch; }
+.contact p { color: var(--hero-muted); max-width: 48ch; margin: 1rem 0 1.75rem; }
+.mail { display: inline-block; font: 500 clamp(1.15rem, 3vw, 1.7rem) var(--font-mono); color: var(--hero-accent); text-decoration: none; border-bottom: 2px solid var(--hero-accent); padding-bottom: .15rem; overflow-wrap: anywhere; }
+footer { background: var(--hero-bg); color: var(--hero-muted); border-top: 1px solid var(--hero-line); padding-block: 1.5rem; font-size: .95rem; }
+
+@media (max-width: 62rem) {
+  .cards, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-body { grid-template-columns: minmax(0, 1fr); }
+  .art { display: none; }
+  .sec-head { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
 }
 @media (max-width: 44rem) {
-  .practice, .use { grid-template-columns: minmax(0, 1fr); }
-  .practice > div, .practice > div + div { padding: 1.25rem 0; border-inline-start: 0; }
-  .practice > div + div { border-top: 1px solid var(--line); }
-  .facts { grid-template-columns: minmax(0, 1fr); gap: .15rem; }
-  .facts dd { margin-bottom: .8rem; }
+  .links { display: none; }
+  .cards, .steps, .principles { grid-template-columns: minmax(0, 1fr); }
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts dt { padding-bottom: 0; border-bottom: 0; padding-inline-end: 0; }
+  .facts dd { padding-top: .25rem; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
-<div class="shell">
 
-  <aside class="rail">
-    <a class="mark" href="#top" aria-label="Amit Eitan">
-      <span class="mark-glyph" aria-hidden="true">AE</span>
-      <span class="mark-name">
-        <span class="en">Amit Eitan<small>Software &amp; AI Solutions</small></span>
-        <span class="he">עמית איתן<small>פיתוח תוכנה ופתרונות בינה מלאכותית</small></span>
-      </span>
-    </a>
-    <nav class="nav" aria-label="Sections">
-      <a href="#about"><span class="en">About</span><span class="he">אודות</span></a>
-      <a href="#toma"><span class="en">TOMA</span><span class="he">TOMA</span></a>
-      <a href="#use"><span class="en">Responsible use</span><span class="he">שימוש אחראי</span></a>
-      <a href="#business"><span class="en">Business details</span><span class="he">פרטי העסק</span></a>
-      <a href="#contact"><span class="en">Contact</span><span class="he">יצירת קשר</span></a>
-    </nav>
-    <div class="lang" role="group" aria-label="Language">
-      <button type="button" id="btn-en" aria-pressed="true">EN</button>
-      <button type="button" id="btn-he" aria-pressed="false">עב</button>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#top" aria-label="Amit Eitan">
+        <span class="brand-glyph" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 12 5l7 14M8 14.5h8"/></svg>
+        </span>
+        <span><span class="en">Amit Eitan</span><span class="he">עמית איתן</span></span>
+      </a>
+      <div class="bar-right">
+        <nav class="links" aria-label="Sections">
+          <a href="#services"><span class="en">Services</span><span class="he">שירותים</span></a>
+          <a href="#approach"><span class="en">Approach</span><span class="he">גישה</span></a>
+          <a href="#principles"><span class="en">Principles</span><span class="he">עקרונות</span></a>
+          <a href="#business"><span class="en">Business</span><span class="he">העסק</span></a>
+          <a href="#contact"><span class="en">Contact</span><span class="he">יצירת קשר</span></a>
+        </nav>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" id="btn-en" aria-pressed="true">EN</button>
+          <button type="button" id="btn-he" aria-pressed="false">עב</button>
+        </div>
+      </div>
     </div>
-  </aside>
 
-  <main id="top">
-
-    <section id="about" aria-labelledby="h-about">
-      <p class="eyebrow"><span class="en">Software development · Israel</span><span class="he">פיתוח תוכנה · ישראל</span></p>
-      <h1 id="h-about">
-        <span class="en">Software and AI systems that do real work, reliably.</span>
-        <span class="he">מערכות תוכנה ובינה מלאכותית שעושות עבודה אמיתית, ובאופן אמין.</span>
-      </h1>
-      <p class="lead">
-        <span class="en">I design and build custom software and AI-driven automation for businesses, with a focus on operations where a missed step has a real cost.</span>
-        <span class="he">אני מתכנן ובונה תוכנה מותאמת אישית ואוטומציה מבוססת בינה מלאכותית לעסקים, עם דגש על תפעול שבו לפספוס יש מחיר ממשי.</span>
-      </p>
-    </section>
-
-    <section aria-label="Services">
-      <div class="practice">
-        <div>
-          <h3><span class="en">Voice automation</span><span class="he">אוטומציה קולית</span></h3>
-          <p><span class="en">Automated phone calls in Hebrew: scheduled check-ins, confirmations and follow-ups, with full records.</span><span class="he">שיחות טלפון אוטומטיות בעברית: בדיקות סטטוס מתוזמנות, אישורים ומעקב, עם תיעוד מלא.</span></p>
-        </div>
-        <div>
-          <h3><span class="en">AI integration</span><span class="he">שילוב בינה מלאכותית</span></h3>
-          <p><span class="en">Speech recognition, language models and structured extraction wired into existing workflows.</span><span class="he">זיהוי דיבור, מודלי שפה והפקת נתונים מובנים משולבים בתהליכי העבודה הקיימים.</span></p>
-        </div>
-        <div>
-          <h3><span class="en">Custom software</span><span class="he">תוכנה מותאמת</span></h3>
-          <p><span class="en">Dashboards, back-office tools and APIs built to the way your team actually operates.</span><span class="he">לוחות בקרה, כלי ניהול ו-API שנבנים לפי אופן העבודה האמיתי של הצוות.</span></p>
-        </div>
-      </div>
-    </section>
-
-    <section id="toma" aria-labelledby="h-toma">
-      <div class="product">
-        <div class="product-head">
-          <h2 id="h-toma">TOMA</h2>
-          <span class="tag"><span class="en">Voice check-in for security teams</span><span class="he">בדיקת נוכחות קולית לצוותי אבטחה</span></span>
-        </div>
-        <p style="margin:0">
-          <span class="en">TOMA replaces the manual phone round that a control room makes at the start of each shift. An automated caller phones the guard on duty, asks a short fixed set of questions, records the answers, and shows the outcome to the site manager on a live dashboard.</span>
-          <span class="he">TOMA מחליפה את סבב הטלפונים הידני שמוקד הבקרה מבצע בתחילת כל משמרת. מערכת חיוג אוטומטית מתקשרת למאבטח במשמרת, שואלת מספר שאלות קבוע וקצר, מתעדת את התשובות ומציגה את התוצאה למנהל האתר בלוח בקרה חי.</span>
+    <div class="hero-body">
+      <div>
+        <p class="eyebrow"><span class="en">Software &amp; AI · Israel</span><span class="he">תוכנה ובינה מלאכותית · ישראל</span></p>
+        <h1>
+          <span class="en">Software and AI systems that do real work, reliably.</span>
+          <span class="he">מערכות תוכנה ובינה מלאכותית שעושות עבודה אמיתית, ובאופן אמין.</span>
+        </h1>
+        <p class="lead">
+          <span class="en">Custom software, intelligent automation and communication systems for businesses that need things to run correctly every day.</span>
+          <span class="he">תוכנה מותאמת, אוטומציה חכמה ומערכות תקשורת לעסקים שצריכים שהדברים יעבדו נכון כל יום.</span>
         </p>
-        <ul class="points">
-          <li><span class="en">Calls are placed on a fixed schedule, one guard at a time, to the post's own line.</span><span class="he">השיחות יוצאות לפי לוח זמנים קבוע, מאבטח אחד בכל פעם, אל הקו של העמדה.</span></li>
-          <li><span class="en">The guard is identified by name and by employee number keyed on the phone.</span><span class="he">המאבטח מזוהה לפי שם ולפי מספר עובד שמוקש בטלפון.</span></li>
-          <li><span class="en">If a check-in goes unanswered or reports a problem, the site manager is notified.</span><span class="he">אם בדיקה לא נענית או מדווחת על בעיה, מנהל האתר מקבל התראה.</span></li>
-          <li><span class="en">Every call is stored with its recording and transcript, so nothing depends on memory.</span><span class="he">כל שיחה נשמרת עם הקלטה ותמלול, כך שדבר אינו תלוי בזיכרון.</span></li>
-        </ul>
-        <pre class="record" aria-label="Illustrative record"><span class="k">shift     </span>morning · starts 07:00
-<span class="k">call      </span>07:20 · outbound · duration 1m 28s
-<span class="k">guard     </span>identified · employee number confirmed
-<span class="k">outcome  </span>completed · all questions answered
-<span class="k">notified </span>none required</pre>
-        <p class="record-cap"><span class="en">Illustrative record. Not real data.</span><span class="he">רשומה להמחשה בלבד. לא נתונים אמיתיים.</span></p>
+        <a class="cta" href="#contact"><span class="en">Start a conversation</span><span class="he">בואו נדבר</span></a>
       </div>
-    </section>
+      <svg class="art" viewBox="0 0 400 360" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- orthogonal signal paths ending in nodes: a system wired together -->
+        <path d="M20 300h90a20 20 0 0 0 20-20v-60a20 20 0 0 1 20-20h70" opacity=".9"/>
+        <path d="M20 250h50a20 20 0 0 1 20 20v10" opacity=".45"/>
+        <path d="M230 200h60a20 20 0 0 0 20-20V90a20 20 0 0 1 20-20h40" opacity=".9"/>
+        <path d="M130 130h80a20 20 0 0 1 20 20v50" opacity=".6"/>
+        <path d="M60 90h70a20 20 0 0 1 20 20v20" opacity=".45"/>
+        <path d="M310 250h70" opacity=".45"/>
+        <path d="M290 200v70a20 20 0 0 0 20 20" opacity=".45"/>
+        <circle cx="20" cy="300" r="6" fill="var(--hero-bg)"/>
+        <circle cx="20" cy="250" r="5" fill="var(--hero-bg)" opacity=".6"/>
+        <circle cx="60" cy="90" r="5" fill="var(--hero-bg)" opacity=".6"/>
+        <circle cx="130" cy="130" r="5" fill="var(--hero-bg)" opacity=".7"/>
+        <circle cx="230" cy="200" r="7" fill="currentColor"/>
+        <circle cx="350" cy="70" r="6" fill="var(--hero-bg)"/>
+        <circle cx="380" cy="250" r="5" fill="var(--hero-bg)" opacity=".6"/>
+        <rect x="190" y="150" width="76" height="50" rx="8" fill="var(--hero-bg)" opacity=".9"/>
+        <path d="M206 170h28M206 182h44" opacity=".8"/>
+      </svg>
+    </div>
+  </div>
+</header>
 
-    <section id="use" aria-labelledby="h-use">
-      <h2 id="h-use"><span class="en">Responsible use of voice calls</span><span class="he">שימוש אחראי בשיחות קוליות</span></h2>
-      <div class="use">
+<main>
+  <section id="services" aria-labelledby="h-services">
+    <div class="wrap">
+      <div class="sec-head">
         <div>
-          <h3><span class="en">Only staff, only scheduled</span><span class="he">רק עובדים, רק לפי לוח זמנים</span></h3>
-          <p><span class="en">Calls go only to employees of the customer organization, on their own working shift, to the number assigned to their post. There is no marketing, no cold calling and no calls to members of the public.</span><span class="he">שיחות מתבצעות רק לעובדי הארגון הלקוח, במהלך משמרתם, אל המספר המשויך לעמדה. אין שיווק, אין שיחות קרות ואין שיחות לציבור.</span></p>
+          <p class="eyebrow"><span class="en">What I do</span><span class="he">במה אני עוסק</span></p>
+          <h2 id="h-services"><span class="en">One engineer, from idea to production.</span><span class="he">מהנדס אחד, מהרעיון ועד הייצור.</span></h2>
         </div>
-        <div>
-          <h3><span class="en">Disclosed at the start</span><span class="he">גילוי בתחילת השיחה</span></h3>
-          <p><span class="en">Each call opens by stating that the conversation is recorded and transcribed. The guard knows this before answering any question.</span><span class="he">כל שיחה נפתחת בהודעה שהשיחה מוקלטת ומתומללת. המאבטח יודע זאת לפני שהוא עונה על שאלה כלשהי.</span></p>
+        <p><span class="en">I work directly with the people who run the operation, so what gets built matches how the work is actually done.</span><span class="he">אני עובד ישירות עם מי שמנהל את הפעילות, כדי שמה שנבנה יתאים לאופן שבו העבודה מתבצעת בפועל.</span></p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
+          <h3><span class="en">Custom software</span><span class="he">תוכנה מותאמת</span></h3>
+          <p><span class="en">Web applications, back-office tools and APIs designed around your process.</span><span class="he">אפליקציות ווב, כלי ניהול ו-API שמתוכננים סביב התהליך שלכם.</span></p>
         </div>
-        <div>
-          <h3><span class="en">Limited access</span><span class="he">גישה מוגבלת</span></h3>
-          <p><span class="en">Recordings and transcripts are processed on behalf of the customer. The dashboard that shows them is limited to authorized managers behind a sign-in.</span><span class="he">הקלטות ותמלולים מעובדים עבור הלקוח. לוח הבקרה שמציג אותם מוגבל למנהלים מורשים מאחורי התחברות.</span></p>
+        <div class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+          <h3><span class="en">AI &amp; automation</span><span class="he">בינה מלאכותית ואוטומציה</span></h3>
+          <p><span class="en">Language models, speech recognition and data extraction put to work inside real workflows.</span><span class="he">מודלי שפה, זיהוי דיבור והפקת נתונים שעובדים בתוך תהליכי עבודה אמיתיים.</span></p>
         </div>
-        <div>
-          <h3><span class="en">A human can always be reached</span><span class="he">תמיד אפשר להגיע לאדם</span></h3>
-          <p><span class="en">Questions or requests about a call, including deletion, go to the contact address below and are answered by a person.</span><span class="he">שאלות או בקשות בנוגע לשיחה, כולל מחיקה, נשלחות לכתובת למטה ונענות על ידי אדם.</span></p>
+        <div class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15.5v3a2 2 0 0 1-2.2 2A18 18 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L9.4 10.9a14 14 0 0 0 5.7 5.7l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <h3><span class="en">Communication systems</span><span class="he">מערכות תקשורת</span></h3>
+          <p><span class="en">Automated calls and messages with clear disclosure, scheduling and complete records.</span><span class="he">שיחות והודעות אוטומטיות עם גילוי ברור, תזמון ותיעוד מלא.</span></p>
+        </div>
+        <div class="card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+          <h3><span class="en">Data &amp; dashboards</span><span class="he">נתונים ולוחות בקרה</span></h3>
+          <p><span class="en">Live views and reports that show what needs attention, without digging for it.</span><span class="he">תצוגות חיות ודוחות שמראים מה דורש תשומת לב, בלי לחפש.</span></p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="business" aria-labelledby="h-business">
-      <h2 id="h-business"><span class="en">Business details</span><span class="he">פרטי העסק</span></h2>
+  <section id="approach" class="alt" aria-labelledby="h-approach">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><span class="en">Approach</span><span class="he">גישה</span></p>
+          <h2 id="h-approach"><span class="en">Four stages, no surprises.</span><span class="he">ארבעה שלבים, בלי הפתעות.</span></h2>
+        </div>
+        <p><span class="en">Each project moves through the same steps, with something working to look at early.</span><span class="he">כל פרויקט עובר באותם שלבים, עם משהו עובד לראות כבר בשלב מוקדם.</span></p>
+      </div>
+      <ol class="steps">
+        <li><h3><span class="en">Understand</span><span class="he">הבנה</span></h3><p><span class="en">Map how the work is done today and where it breaks.</span><span class="he">למפות איך העבודה מתבצעת היום ואיפה היא נשברת.</span></p></li>
+        <li><h3><span class="en">Design</span><span class="he">תכנון</span></h3><p><span class="en">Agree on scope, behavior and what done looks like.</span><span class="he">להסכים על היקף, התנהגות ומה נחשב גמור.</span></p></li>
+        <li><h3><span class="en">Build</span><span class="he">פיתוח</span></h3><p><span class="en">Ship in small, tested increments you can try early.</span><span class="he">לספק במנות קטנות ובדוקות שאפשר לנסות מוקדם.</span></p></li>
+        <li><h3><span class="en">Run</span><span class="he">הפעלה</span></h3><p><span class="en">Monitor, support and improve once it is in daily use.</span><span class="he">לנטר, לתמוך ולשפר כשהמערכת בשימוש יומיומי.</span></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="principles" aria-labelledby="h-principles">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><span class="en">Principles</span><span class="he">עקרונות</span></p>
+          <h2 id="h-principles"><span class="en">How the work is done.</span><span class="he">איך העבודה נעשית.</span></h2>
+        </div>
+        <p><span class="en">These apply to every system I build, and most of all to anything that contacts people.</span><span class="he">העקרונות האלה חלים על כל מערכת שאני בונה, ובמיוחד על כל מערכת שיוצרת קשר עם אנשים.</span></p>
+      </div>
+      <div class="principles">
+        <div><h3><span class="en">Built to be dependable</span><span class="he">בנוי להיות אמין</span></h3><p><span class="en">Failures are expected and handled. Every action leaves a record, so nothing disappears silently.</span><span class="he">כשלים צפויים ומטופלים. כל פעולה משאירה תיעוד, כך שדבר לא נעלם בשקט.</span></p></div>
+        <div><h3><span class="en">Transparent communication</span><span class="he">תקשורת שקופה</span></h3><p><span class="en">Anyone contacted by a system I build is told who is contacting them and, where it applies, that the interaction is recorded.</span><span class="he">מי שנוצר איתו קשר על ידי מערכת שבניתי יודע מי פונה אליו, ובמקום הרלוונטי גם שהאינטראקציה מוקלטת.</span></p></div>
+        <div><h3><span class="en">Purpose-limited and private</span><span class="he">ייעוד מוגבל ופרטיות</span></h3><p><span class="en">Contact is limited to people with a legitimate relationship to the customer. Data is processed for that purpose and access is restricted.</span><span class="he">יצירת קשר מוגבלת לאנשים שיש להם קשר לגיטימי ללקוח. המידע מעובד למטרה זו והגישה אליו מוגבלת.</span></p></div>
+        <div><h3><span class="en">A person to talk to</span><span class="he">אדם לדבר איתו</span></h3><p><span class="en">Questions, corrections and deletion requests go to a real contact address and are answered by a person.</span><span class="he">שאלות, תיקונים ובקשות מחיקה מגיעים לכתובת קשר אמיתית ונענים על ידי אדם.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="business" class="alt" aria-labelledby="h-business">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><span class="en">Business</span><span class="he">העסק</span></p>
+          <h2 id="h-business"><span class="en">Registered in Israel.</span><span class="he">רשום בישראל.</span></h2>
+        </div>
+        <p></p>
+      </div>
       <dl class="facts">
         <dt><span class="en">Name</span><span class="he">שם</span></dt>
         <dd><span class="en">Amit Eitan</span><span class="he">עמית איתן</span></dd>
@@ -265,21 +289,25 @@ footer { border-top: 1px solid var(--line); padding-top: 1.5rem; color: var(--mu
         <dt><span class="en">Location</span><span class="he">מיקום</span></dt>
         <dd><span class="en">Kochav Yair, Israel</span><span class="he">כוכב יאיר, ישראל</span></dd>
       </dl>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" aria-labelledby="h-contact">
-      <h2 id="h-contact"><span class="en">Contact</span><span class="he">יצירת קשר</span></h2>
-      <p><span class="en">For project enquiries, questions about TOMA, or requests regarding a call, write to:</span><span class="he">לפניות בנושא פרויקטים, שאלות על TOMA או בקשות בנוגע לשיחה, אפשר לכתוב אל:</span></p>
-      <p><a class="mono" href="mailto:amiteitan20@gmail.com">amiteitan20@gmail.com</a></p>
-    </section>
+  <section id="contact" class="contact" aria-labelledby="h-contact">
+    <div class="wrap">
+      <p class="eyebrow"><span class="en">Contact</span><span class="he">יצירת קשר</span></p>
+      <h2 id="h-contact"><span class="en">Tell me what needs to run better.</span><span class="he">ספרו לי מה צריך לעבוד טוב יותר.</span></h2>
+      <p><span class="en">For project enquiries, questions, or requests about a message or call, write to:</span><span class="he">לפניות בנושא פרויקטים, שאלות, או בקשות בנוגע להודעה או שיחה, אפשר לכתוב אל:</span></p>
+      <a class="mail" href="mailto:amiteitan20@gmail.com">amiteitan20@gmail.com</a>
+    </div>
+  </section>
+</main>
 
-    <footer>
-      <span class="en">© 2026 Amit Eitan. All rights reserved.</span>
-      <span class="he">© 2026 עמית איתן. כל הזכויות שמורות.</span>
-    </footer>
-
-  </main>
-</div>
+<footer>
+  <div class="wrap">
+    <span class="en">© 2026 Amit Eitan. All rights reserved.</span>
+    <span class="he">© 2026 עמית איתן. כל הזכויות שמורות.</span>
+  </div>
+</footer>
 
 <script>
 (function () {
